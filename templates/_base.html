@@ -1,0 +1,22 @@
+<!doctype HTML>
+<html>
+<head>
+<title>{% block title %}book app{% endblock title %}</title>
+
+</head>
+<body>
+{% if user.is_authenticated %}
+<p>hi {{user.email}}</p>
+<a href="{% url 'logout' %}">logout</a>
+{% else %}
+<a href="{% url 'login' %}">login</a>
+<a href="{% url 'signup' %}">signup</a>
+
+{% endif %}
+<div>
+{% block content %}
+{% endblock content %}
+
+</div>
+<body>
+</html>
