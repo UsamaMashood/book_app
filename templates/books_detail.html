@@ -1,0 +1,31 @@
+{% extends '_base.html' %}
+
+
+{% block title %}
+book detail
+{% endblock title %}
+
+
+
+{% block content %}
+<div class='container'>
+
+<img src ='{{book.image.url}}' width=20 height=20 />
+<h5 class="title">{{ book.title|capfirst }}</h5> 
+<p class='text-mute'>By {{book.author}}</span></p>
+<p class='text'>price : {{book.price}}</p>
+<br>
+{% for comment in book.reviews.all %}
+<p>{{comment.comment}}  <span class='text-mute'>by {{ comment.author}}</span></p>
+{% endfor %}
+
+</div>
+
+<div class='container'>
+<form method='post'>
+{% csrf_token %}
+{{form.as_p}}
+<input type='submit' value='send' /> 
+</form>
+</div>
+{% endblock content %}

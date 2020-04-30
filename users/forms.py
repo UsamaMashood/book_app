@@ -21,7 +21,7 @@ class CustomUserCreationForm(UserCreationForm):
 class CustomSignupForm(SignupForm):
     first_name = forms.CharField(max_length=30,strip=True, required=True)
     last_name = forms.CharField(max_length=30, strip=True, required=True)
-    age = forms.IntegerField(min_value=1, max_value=100, required=True)
+    age = forms.IntegerField(min_value=18, max_value=100, required=True)
 
     def signup(self, request, user):
 
@@ -29,4 +29,6 @@ class CustomSignupForm(SignupForm):
         user.last_name = self.cleaned_data['last_name']
         user.age = self.cleaned_data['age']
         user.save()
+
         return user
+
